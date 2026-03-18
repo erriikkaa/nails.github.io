@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Основные метатеги -->
+    <title>Rika Nails | Салон маникюра в центре Москвы</title>
+    <meta name="description" content="Салон маникюра Rika Nails предлагает профессиональный уход: маникюр, педикюр, наращивание, дизайн. Стерильные инструменты, премиальные материалы. Запись онлайн 24/7.">
+    <meta name="keywords" content="маникюр, салон маникюра, педикюр, наращивание ногтей, дизайн ногтей, гель-лак, Rika Nails">
+    <meta name="author" content="Rika Nails">
+    <meta name="geo.region" content="RU">
+    <meta name="geo.placename" content="Москва">
+    
+    <meta property="og:title" content="Rika Nails | Салон маникюра">
+    <meta property="og:description" content="Профессиональный маникюр, педикюр и дизайн ногтей. Стерильно, уютно, качественно. Записывайтесь онлайн!">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://rikanails.ru">
+    <meta property="og:image" content="https://rikanails.ru/1.jpg">
+    <meta property="og:site_name" content="Rika Nails">
+    
+    <!-- Микроразметка LocalBusiness (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HealthAndBeautyBusiness",
+      "name": "Rika Nails",
+      "alternateName": "Салон маникюра Rika Nails",
+      "description": "Профессиональный салон маникюра и педикюра в центре Москвы. Стерильные инструменты, премиальные материалы, опытные мастера.",
+      "image": "https://rikanails.ru/1.jpg",
+      "logo": "https://rikanails.ru/лого.png",
+      "url": "https://rikanails.ru",
+      "telephone": "+7-999-123-45-67",
+      "email": "info@rikanails.ru",
+      "priceRange": "₽₽",
+      "currenciesAccepted": "RUB",
+      "paymentAccepted": "Наличные, Visa, Mastercard, МИР",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "ул. Розовая, 15",
+        "addressLocality": "Москва",
+        "postalCode": "123456",
+        "addressCountry": "RU"
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "10:00",
+          "closes": "21:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday", "Sunday"],
+          "opens": "11:00",
+          "closes": "20:00"
+        }
+      ]
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #4a4a4a;
+            background: #fce4ec;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: #4a4a4a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(240, 98, 146, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+        
+        .logo__text {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo__text span {
+            color: #f06292;
+        }
+        
+        .nav__list {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav__link {
+            text-decoration: none;
+            color: #4a4a4a;
+            font-weight: 500;
+            min-height: 48px;
+            display: flex;
+            align-items: center;
+            padding: 0 10px;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background: #f06292;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            min-height: 52px;
+            min-width: 48px;
+            font-size: 18px;
+        }
+        
+        .btn-small {
+            padding: 12px 28px;
+            min-height: 48px;
+            font-size: 16px;
+        }
+        
+        .burger {
+            display: none;
+            font-size: 32px;
+            cursor: pointer;
+            color: #f06292;
+            width: 48px;
+            height: 48px;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 99;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #f8bbd0, #ffe0f0);
+            padding: 80px 0;
+        }
+        
+        .hero__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+        
+        .hero__title {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+        
+        .hero__title span {
+            color: #f06292;
+            display: block;
+            font-size: 36px;
+            font-weight: 400;
+        }
+        
+        .hero__text {
+            margin-bottom: 30px;
+            color: #7c7c7c;
+            font-size: 18px;
+        }
+        
+        .hero__image {
+            text-align: center;
+        }
+        
+        .hero__image img {
+            width: 90%;
+            max-width: 500px;
+            border-radius: 30px;
+            box-shadow: 0 20px 40px rgba(240, 98, 146, 0.3);
+        }
+        
+        /* Блок преимуществ */
+        .features {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+        }
+        
+        .features__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(240, 98, 146, 0.1);
+        }
+        
+        .feature-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        
+        .feature-card__title {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-card p {
+            font-size: 16px;
+        }
+        
+        /* Блок услуг */
+        .services {
+            background: white;
+            padding: 80px 0;
+        }
+        
+        .services__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .service-card {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 20px;
+            background: #fce4ec;
+            border-radius: 20px;
+            min-height: 120px;
+        }
+        
+        .service-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 15px;
+            object-fit: cover;
+        }
+        
+        .service-card h3 {
+            font-size: 18px;
+        }
+        
+        .service-card__price {
+            margin-left: auto;
+            font-weight: 700;
+            color: #f06292;
+            font-size: 18px;
+        }
+        
+        /* Портфолио */
+        .portfolio {
+            padding: 80px 0;
+        }
+        
+        .portfolio__grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .portfolio__item {
+            height: 250px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(240, 98, 146, 0.15);
+        }
+        
+        .portfolio__item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* Блог на главной */
+        .blog-preview {
+            padding: 40px 0;
+        }
+        
+        .blog-preview-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 10px 20px rgba(240, 98, 146, 0.1);
+        }
+        
+        .blog-card h3 {
+            color: #f06292;
+            margin-bottom: 15px;
+        }
+        
+        .blog-link {
+            display: inline-block;
+            margin-top: 15px;
+            color: #f06292;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        
+        /* Блок записи */
+        .booking {
+            background: linear-gradient(135deg, #f8bbd0, #fce4ec);
+            padding: 80px 0;
+        }
+        
+        .booking__inner {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(240, 98, 146, 0.2);
+        }
+        
+        .form__group {
+            margin-bottom: 20px;
+        }
+        
+        .form__input {
+            width: 100%;
+            padding: 18px 15px;
+            border: 1px solid #f8bbd0;
+            border-radius: 10px;
+            font-family: inherit;
+            font-size: 18px;
+            min-height: 60px;
+        }
+        
+        .form__input:focus {
+            outline: none;
+            border-color: #f06292;
+        }
+        
+        .form__btn {
+            width: 100%;
+            padding: 18px;
+            background: #f06292;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 18px;
+            min-height: 60px;
+        }
+        
+        /* Подвал */
+        .footer {
+            background: #4a4a4a;
+            color: white;
+            padding: 40px 0 20px;
+        }
+        
+        .footer__inner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer__logo {
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+        
+        .footer__logo span {
+            color: #f06292;
+        }
+        
+        .footer__contacts p {
+            margin: 10px 0;
+            min-height: 44px;
+            display: flex;
+            align-items: center;
+            font-size: 16px;
+        }
+        
+        .footer__copy {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 16px;
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 15px;
+            min-height: 44px;
+        }
+        
+        @media (max-width: 992px) {
+            .features__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .services__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .portfolio__grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+            
+            .blog-preview-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer__inner {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+            
+            .hero__title {
+                font-size: 42px;
+            }
+            
+            .hero__title span {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 30px 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                z-index: 100;
+            }
+            
+            .nav.active {
+                display: block;
+            }
+            
+            .nav__list {
+                flex-direction: column;
+                align-items: center;
+                gap: 20px;
+            }
+            
+            .nav__link {
+                padding: 15px 20px;
+                font-size: 18px;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .burger {
+                display: flex;
+            }
+            
+            .header__inner .btn-small {
+                display: none;
+            }
+            
+            .nav .btn-small {
+                display: flex;
+                margin: 20px auto 0;
+                width: fit-content;
+            }
+            
+            .hero__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .hero__title {
+                font-size: 36px;
+            }
+            
+            .hero__title span {
+                font-size: 28px;
+            }
+            
+            .hero__text {
+                font-size: 16px;
+            }
+            
+            .features__grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .services__grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .portfolio__grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .portfolio__item {
+                height: 220px;
+            }
+            
+            .footer__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+            
+            .footer__contacts p {
+                justify-content: center;
+            }
+            
+            .section-title {
+                font-size: 28px;
+                margin-bottom: 40px;
+            }
+            
+            .booking__inner {
+                padding: 30px 20px;
+            }
+            
+            .form__input {
+                padding: 16px 15px;
+                font-size: 16px;
+                min-height: 56px;
+            }
+            
+            .form__btn {
+                padding: 16px;
+                font-size: 16px;
+                min-height: 56px;
+            }
+        }
+        
+        @media (max-width: 375px) {
+            .logo img {
+                width: 80px;
+            }
+            
+            .logo__text {
+                font-size: 20px;
+            }
+            
+            .hero__title {
+                font-size: 32px;
+            }
+            
+            .hero__title span {
+                font-size: 24px;
+            }
+            
+            .feature-card {
+                padding: 25px 15px;
+            }
+            
+            .feature-card__title {
+                font-size: 18px;
+            }
+            
+            .service-card {
+                padding: 15px;
+            }
+            
+            .service-card img {
+                width: 70px;
+                height: 70px;
+            }
+        }
+        
+        @media (max-width: 320px) {
+            .logo img {
+                width: 70px;
+            }
+            
+            .logo__text {
+                font-size: 18px;
+            }
+            
+            .hero__title {
+                font-size: 28px;
+            }
+            
+            .hero__title span {
+                font-size: 22px;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                min-height: 48px;
+                font-size: 16px;
+            }
+            
+            .feature-card {
+                padding: 20px 12px;
+            }
+            
+            .service-card {
+                padding: 12px;
+            }
+            
+            .service-card img {
+                width: 60px;
+                height: 60px;
+            }
+            
+            .portfolio__item {
+                height: 180px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <div class="logo">
+            <img src="лого.png" alt="Логотип салона маникюра Rika Nails">
+            <div class="logo__text">Rika<span>Nails</span></div>
+        </div>
+        <nav class="nav" id="nav">
+            <ul class="nav__list">
+                <li><a href="#hero" class="nav__link">Главная</a></li>
+                <li><a href="#features" class="nav__link">Почему мы</a></li>
+                <li><a href="#services" class="nav__link">Услуги и цены</a></li>
+                <li><a href="#portfolio" class="nav__link">Портфолио</a></li>
+                <li><a href="#booking" class="nav__link">Запись</a></li>
+                <li><a href="article.html" class="nav__link">Блог</a></li>
+            </ul>
+            <a href="#booking" class="btn btn-small">Записаться</a>
+        </nav>
+        <div class="burger" id="burger">☰</div>
+    </div>
+</header>
+<div class="menu-overlay" id="menuOverlay"></div>
+
+<main>
+    <section class="hero" id="hero">
+        <div class="container hero__inner">
+            <div>
+                <h1 class="hero__title">Rika Nails: <span>Идеальный маникюр в центре Москвы</span></h1>
+                <p class="hero__text">Уютный салон с профессиональными мастерами. Качественные материалы и индивидуальный подход.</p>
+                <a href="#booking" class="btn">Записаться онлайн</a>
+            </div>
+            <div class="hero__image">
+                <img src="1.jpg" alt="Мастер салона Rika Nails делает маникюр клиенту" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section class="features" id="features">
+        <div class="container">
+            <h2 class="section-title">Почему выбирают Rika Nails</h2>
+            <div class="features__grid">
+                <div class="feature-card">
+                    <img src="стирильность.jpg" alt="Стерилизация инструментов в автоклаве - безопасность клиентов" loading="lazy">
+                    <h3 class="feature-card__title">Стерильность</h3>
+                    <p>Обработка инструментов после каждого клиента</p>
+                </div>
+                <div class="feature-card">
+                    <img src="опыт.jpg" alt="Мастер маникюра с 5-летним опытом работы" loading="lazy">
+                    <h3 class="feature-card__title">Опыт</h3>
+                    <p>Мастера с опытом от 5 лет</p>
+                </div>
+                <div class="feature-card">
+                    <img src="комфорт.jpg" alt="Уютное кресло и розовый интерьер салона" loading="lazy">
+                    <h3 class="feature-card__title">Уют</h3>
+                    <p>Комфортная атмосфера</p>
+                </div>
+                <div class="feature-card">
+                    <img src="бренды.jpg" alt="Премиальные материалы для маникюра CND, OPI" loading="lazy">
+                    <h3 class="feature-card__title">Материалы</h3>
+                    <p>Премиальные бренды</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги и цены</h2>
+            <div class="services__grid">
+                <div class="service-card">
+                    <img src="маникюр.jpg" alt="Классический маникюр с покрытием гель-лак" loading="lazy">
+                    <h3>Маникюр</h3>
+                    <span class="service-card__price">1500 ₽</span>
+                </div>
+                <div class="service-card">
+                    <img src="педикюр.jpg" alt="Педикюр с массажем и уходом за кожей стоп" loading="lazy">
+                    <h3>Педикюр</h3>
+                    <span class="service-card__price">2200 ₽</span>
+                </div>
+                <div class="service-card">
+                    <img src="дизайн1.jpg" alt="Дизайн ногтей с втиркой и стразами" loading="lazy">
+                    <h3>Дизайн</h3>
+                    <span class="service-card__price">от 500 ₽</span>
+                </div>
+                <div class="service-card">
+                    <img src="наращивание.jpg" alt="Наращивание ногтей гелевой технологией" loading="lazy">
+                    <h3>Наращивание</h3>
+                    <span class="service-card__price">2800 ₽</span>
+                </div>
+                <div class="service-card">
+                    <img src="гельлак.jpg" alt="Покрытие гель-лаком стойкое до 3 недель" loading="lazy">
+                    <h3>Гель-лак</h3>
+                    <span class="service-card__price"><a href="product.html" style="color: #f06292; text-decoration: none;">2000 ₽ → подробнее</a></span>
+                </div>
+                <div class="service-card">
+                    <img src="уход.jpg" alt="СПА-уход для рук с парафинотерапией" loading="lazy">
+                    <h3>СПА-уход</h3>
+                    <span class="service-card__price">1800 ₽</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="portfolio" id="portfolio">
+        <div class="container">
+            <h2 class="section-title">Примеры наших работ</h2>
+            <div class="portfolio__grid">
+                <div class="portfolio__item">
+                    <img src="2.jpg" alt="Французский маникюр с белой полоской на миндалевидной форме" loading="lazy">
+                </div>
+                <div class="portfolio__item">
+                    <img src="3.jpg" alt="Омбре-дизайн с переходом от розового к белому" loading="lazy">
+                </div>
+                <div class="portfolio__item">
+                    <img src="4.jpg" alt="Дизайн с золотой фольгой на нюдовой основе" loading="lazy">
+                </div>
+                <div class="portfolio__item">
+                    <img src="5.jpg" alt="Маникюр со стразами и жемчугом на свадьбу" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блог на главной -->
+    <section class="blog-preview">
+        <div class="container">
+            <h2 class="section-title">Полезные статьи</h2>
+            <div class="blog-preview-grid">
+                <div class="blog-card">
+                    <h3>Как ухаживать за гель-лаком: 5 правил стойкости</h3>
+                    <p>Продлите жизнь маникюру до 4 недель. Простые правила ухода от мастера Rika Nails.</p>
+                    <a href="article.html" class="blog-link">Читать статью →</a>
+                </div>
+                <div class="blog-card">
+                    <h3>Маникюр с гель-лаком: все, что нужно знать</h3>
+                    <p>Подробный обзор услуги, цены, преимущества и ответы на частые вопросы.</p>
+                    <a href="product.html" class="blog-link">Подробнее об услуге →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="booking" id="booking">
+        <div class="container">
+            <div class="booking__inner">
+                <h2 class="section-title">Записаться онлайн</h2>
+                <form>
+                    <div class="form__group">
+                        <input type="text" class="form__input" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form__group">
+                        <input type="tel" class="form__input" placeholder="Телефон" required>
+                    </div>
+                    <div class="form__group">
+                        <select class="form__input">
+                            <option>Маникюр</option>
+                            <option>Педикюр</option>
+                            <option>Дизайн</option>
+                            <option>Наращивание</option>
+                            <option>Гель-лак</option>
+                        </select>
+                    </div>
+                    <div class="form__group">
+                        <input type="date" class="form__input" required>
+                    </div>
+                    <button type="submit" class="form__btn">Записаться</button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__logo">Rika<span>Nails</span></div>
+                <p>Салон маникюра с душой</p>
+            </div>
+            <div class="footer__contacts">
+                <h4>Контакты</h4>
+                <p>ул. Розовая, 15, Москва</p>
+                <p>+7 (999) 123-45-67</p>
+                <p>info@rikanails.ru</p>
+                <p>Ежедневно 10:00 - 21:00</p>
+            </div>
+            <div class="footer__nav">
+                <h4>Информация</h4>
+                <p><a href="article.html">Блог</a></p>
+                <p><a href="product.html">Маникюр с гель-лаком</a></p>
+                <p><a href="#">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+        <div class="footer__copy">© 2026 RikaNails. Все права защищены.</div>
+    </div>
+</footer>
+
+<script>
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('nav');
+    const overlay = document.getElementById('menuOverlay');
+    
+    burger.onclick = function() {
+        nav.classList.toggle('active');
+        overlay.classList.toggle('active');
+    };
+    
+    overlay.onclick = function() {
+        nav.classList.remove('active');
+        overlay.classList.remove('active');
+    };
+    
+    document.querySelectorAll('.nav__link').forEach(link => {
+        link.onclick = function() {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+        };
+    });
+    
+    window.addEventListener('resize', function() {
+        if (window.innerWidth > 768) {
+            nav.classList.remove('active');
+            overlay.classList.remove('active');
+        }
+    });
+</script>
+
+</body>
+</html>
