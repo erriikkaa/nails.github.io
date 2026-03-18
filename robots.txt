@@ -1,0 +1,23 @@
+User-agent: *
+Allow: /
+
+Disallow: /admin/
+Disallow: /cgi-bin/
+Disallow: /tmp/
+
+Disallow: /*?*
+Disallow: /*&
+
+Sitemap: https://rikanails.ru/sitemap.xml
+
+Host: https://rikanails.ru
+
+Crawl-delay: 2
+
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Yandex
+Allow: /
+Crawl-delay: 2

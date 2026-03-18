@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Основные метатеги -->
+    <title>Маникюр с гель-лаком | Rika Nails</title>
+    <meta name="description" content="Профессиональный маникюр с гель-лаком. Стойкость до 4 недель. Премиальные материалы CND, OPI. Запись онлайн.">
+    <meta name="keywords" content="маникюр, гель-лак, маникюр с гель-лаком, покрытие гель-лак, салон маникюра">
+    <meta name="author" content="Rika Nails">
+
+    <meta property="og:title" content="Маникюр с гель-лаком | Rika Nails">
+    <meta property="og:description" content="Профессиональный маникюр с гель-лаком. Стойкость до 4 недель. Премиальные материалы. Запись онлайн.">
+    <meta property="og:type" content="product">
+    <meta property="og:url" content="https://rikanails.ru/services/gel-manicure">
+    <meta property="og:image" content="https://rikanails.ru/services/gel-manicure.jpg">
+    <meta property="og:site_name" content="Rika Nails">
+    
+    <!-- Микроразметка Product (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Product",
+      "name": "Маникюр с гель-лаком",
+      "description": "Классический маникюр с покрытием гель-лаком премиальных брендов. Включает обработку кутикулы, придание формы, нанесение базы, цветного покрытия и топа.",
+      "image": "https://rikanails.ru/services/gel-manicure.jpg",
+      "brand": {
+        "@type": "Brand",
+        "name": "Rika Nails"
+      },
+      "sku": "MN-001-GEL",
+      "offers": {
+        "@type": "Offer",
+        "price": "2000",
+        "priceCurrency": "RUB",
+        "availability": "https://schema.org/InStock",
+        "url": "https://rikanails.ru/services/gel-manicure",
+        "priceValidUntil": "2025-12-31"
+      },
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "4.9",
+        "reviewCount": "127",
+        "bestRating": "5",
+        "worstRating": "1"
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "author": {
+            "@type": "Person",
+            "name": "Елена"
+          },
+          "datePublished": "2025-03-10",
+          "reviewBody": "Делаю маникюр только здесь! Держится 3 недели идеально.",
+          "reviewRating": {
+            "@type": "Rating",
+            "ratingValue": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: #4a4a4a;
+            background: #fce4ec;
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            color: #4a4a4a;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Шапка */
+        .header {
+            background: white;
+            box-shadow: 0 2px 10px rgba(240, 98, 146, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header__inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            width: 100px;
+            height: auto;
+        }
+        
+        .logo__text {
+            font-size: 24px;
+            font-weight: 700;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .logo__text span {
+            color: #f06292;
+        }
+        
+        .nav__list {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav__link {
+            text-decoration: none;
+            color: #4a4a4a;
+            font-weight: 500;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #f06292;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 14px;
+        }
+        
+        .burger {
+            display: none;
+            font-size: 30px;
+            cursor: pointer;
+            color: #f06292;
+        }
+        
+        /* Страница услуги */
+        .product-page {
+            background: white;
+            border-radius: 30px;
+            padding: 50px;
+            margin: 50px 0;
+            box-shadow: 0 10px 30px rgba(240, 98, 146, 0.1);
+        }
+        
+        .product-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .product-header h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            color: #4a4a4a;
+        }
+        
+        .product-image {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: 20px;
+            margin: 0 auto 30px;
+            display: block;
+            box-shadow: 0 10px 20px rgba(240, 98, 146, 0.2);
+        }
+        
+        .product-price {
+            font-size: 36px;
+            font-weight: 700;
+            color: #f06292;
+            margin: 20px 0;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .product-description {
+            font-size: 18px;
+            margin: 30px 0;
+            padding: 30px;
+            background: #fce4ec;
+            border-radius: 20px;
+        }
+        
+        .product-description h2 {
+            color: #f06292;
+            margin-bottom: 20px;
+            font-size: 28px;
+        }
+        
+        .product-description p {
+            margin-bottom: 15px;
+        }
+        
+        .product-description ul {
+            margin: 20px 0 20px 40px;
+        }
+        
+        .product-description li {
+            margin-bottom: 10px;
+        }
+        
+        /* Рейтинг */
+        .product-rating {
+            background: #f8bbd0;
+            padding: 20px;
+            border-radius: 15px;
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .rating-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: #f06292;
+        }
+        
+        .rating-count {
+            font-size: 16px;
+            color: #4a4a4a;
+        }
+        
+        /* Отзывы */
+        .reviews {
+            margin: 50px 0;
+        }
+        
+        .reviews h2 {
+            color: #f06292;
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+        
+        .review-card {
+            background: #fce4ec;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .review-author {
+            color: #f06292;
+        }
+        
+        .review-date {
+            color: #7c7c7c;
+            font-size: 14px;
+        }
+        
+        .review-text {
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .review-rating {
+            color: #f06292;
+            font-weight: 600;
+        }
+        
+        /* Кнопка записи */
+        .booking-section {
+            text-align: center;
+            margin: 50px 0 20px;
+        }
+        
+        .booking-section .btn {
+            font-size: 18px;
+            padding: 15px 50px;
+        }
+        
+        /* Подвал */
+        .footer {
+            background: #4a4a4a;
+            color: white;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+        }
+        
+        .footer__inner {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer__logo {
+            font-size: 24px;
+            font-family: 'Playfair Display', serif;
+            margin-bottom: 10px;
+        }
+        
+        .footer__logo span {
+            color: #f06292;
+        }
+        
+        .footer__contacts p {
+            margin: 10px 0;
+        }
+        
+        .footer__copy {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .footer a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        /* Адаптация */
+        @media (max-width: 992px) {
+            .footer__inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-header h1 {
+                font-size: 32px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav {
+                display: none;
+            }
+            
+            .nav.active {
+                display: block;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            }
+            
+            .nav__list {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .burger {
+                display: block;
+            }
+            
+            .product-page {
+                padding: 30px 20px;
+            }
+            
+            .product-price {
+                font-size: 28px;
+            }
+            
+            .review-header {
+                flex-direction: column;
+                gap: 5px;
+            }
+            
+            .footer__inner {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="container header__inner">
+        <div class="logo">
+            <img src="лого.png" alt="Логотип салона маникюра Rika Nails">
+            <div class="logo__text">Rika<span>Nails</span></div>
+        </div>
+        <nav class="nav" id="nav">
+            <ul class="nav__list">
+                <li><a href="LocalBusiness.html" class="nav__link">Главная</a></li>
+                <li><a href="LocalBusiness.html#features" class="nav__link">Почему мы</a></li>
+                <li><a href="LocalBusiness.html#services" class="nav__link">Услуги и цены</a></li>
+                <li><a href="LocalBusiness.html#portfolio" class="nav__link">Портфолио</a></li>
+                <li><a href="LocalBusiness.html#booking" class="nav__link">Запись</a></li>
+                <li><a href="article.html" class="nav__link">Блог</a></li>
+            </ul>
+        </nav>
+        <a href="LocalBusiness.html#booking" class="btn btn-small">Записаться</a>
+        <div class="burger" id="burger">☰</div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="product-page" itemscope itemtype="https://schema.org/Product">
+        <div class="product-header">
+            <h1 itemprop="name">Маникюр с гель-лаком</h1>
+            <meta itemprop="sku" content="MN-001-GEL">
+            <meta itemprop="brand" content="Rika Nails">
+            <link itemprop="image" href="https://rikanails.ru/services/gel-manicure.jpg">
+            <img src="2.jpg" alt="Маникюр с гель-лаком" class="product-image" itemprop="image">
+            
+            <div class="product-price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
+                <span itemprop="price">2000</span> ₽
+                <meta itemprop="priceCurrency" content="RUB">
+                <meta itemprop="availability" content="https://schema.org/InStock">
+                <meta itemprop="url" content="https://rikanails.ru/services/gel-manicure">
+                <meta itemprop="priceValidUntil" content="2025-12-31">
+            </div>
+        </div>
+        
+        <div class="product-rating" itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">
+            <div class="rating-value" itemprop="ratingValue">4.9</div>
+            <div class="rating-count">на основе <span itemprop="reviewCount">127</span> отзывов</div>
+            <meta itemprop="bestRating" content="5">
+            <meta itemprop="worstRating" content="1">
+        </div>
+        
+        <div class="product-description" itemprop="description">
+            <h2>Описание услуги</h2>
+            <p>Классический маникюр с покрытием гель-лаком премиальных брендов CND и OPI. Идеальное решение для тех, кто ценит свое время и хочет носить идеальный маникюр до 4 недель.</p>
+            
+            <h3>Что входит в процедуру:</h3>
+            <ul>
+                <li>Обработка кутикулы (аппаратный или классический метод на выбор)</li>
+                <li>Придание формы ногтям</li>
+                <li>Обезжиривание и праймер</li>
+                <li>Нанесение базового покрытия</li>
+                <li>Два слоя цветного гель-лака</li>
+                <li>Закрепление топовым покрытием</li>
+                <li>Увлажнение кутикулы маслом</li>
+            </ul>
+            
+            <h3>Преимущества:</h3>
+            <ul>
+                <li>Стойкость до 4 недель без сколов</li>
+                <li>Безопасные материалы (Hypoallergenic)</li>
+                <li>Широкая палитра цветов (более 200 оттенков)</li>
+                <li>Гарантия на покрытие 2 недели</li>
+            </ul>
+            
+            <div style="background: #f8bbd0; padding: 20px; border-radius: 15px; margin-top: 20px;">
+                <p style="font-weight: 600; margin-bottom: 10px;">Полезные материалы:</p>
+                <a href="article.html" style="color: #f06292;">Как ухаживать за гель-лаком →</a>
+            </div>
+        </div>
+        
+        <div class="reviews">
+            <h2>Отзывы клиентов</h2>
+            
+            <div class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+                <div class="review-header">
+                    <span class="review-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <span itemprop="name">Елена</span>
+                    </span>
+                    <span class="review-date" itemprop="datePublished">10 марта 2025</span>
+                </div>
+                <div class="review-text" itemprop="reviewBody">
+                    Делаю маникюр только здесь! Держится 3 недели идеально, ни одного скола. Мастера работают аккуратно и быстро. Очень довольна.
+                </div>
+                <div class="review-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                    Оценка: <span itemprop="ratingValue">5</span>/<span itemprop="bestRating">5</span>
+                    <meta itemprop="worstRating" content="1">
+                </div>
+            </div>
+            
+            <div class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+                <div class="review-header">
+                    <span class="review-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <span itemprop="name">Анастасия</span>
+                    </span>
+                    <span class="review-date" itemprop="datePublished">5 марта 2025</span>
+                </div>
+                <div class="review-text" itemprop="reviewBody">
+                    Хожу в Rika Nails уже год. Гель-лак всегда ложится идеально, выбор цветов огромный. Цены приемлемые, качество отличное.
+                </div>
+                <div class="review-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                    Оценка: <span itemprop="ratingValue">5</span>/<span itemprop="bestRating">5</span>
+                    <meta itemprop="worstRating" content="1">
+                </div>
+            </div>
+            
+            <div class="review-card" itemprop="review" itemscope itemtype="https://schema.org/Review">
+                <div class="review-header">
+                    <span class="review-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+                        <span itemprop="name">Марина</span>
+                    </span>
+                    <span class="review-date" itemprop="datePublished">28 февраля 2025</span>
+                </div>
+                <div class="review-text" itemprop="reviewBody">
+                    Отличный салон, очень уютно. Мастер Анна подобрала идеальный дизайн. Гель-лак держится уже 3 недели, выглядит как новый.
+                </div>
+                <div class="review-rating" itemprop="reviewRating" itemscope itemtype="https://schema.org/Rating">
+                    Оценка: <span itemprop="ratingValue">5</span>/<span itemprop="bestRating">5</span>
+                    <meta itemprop="worstRating" content="1">
+                </div>
+            </div>
+        </div>
+        
+        <div class="booking-section">
+            <a href="LocalBusiness.html#booking" class="btn">Записаться на маникюр</a>
+        </div>
+    </div>
+</main>
+
+<footer class="footer">
+    <div class="container">
+        <div class="footer__inner">
+            <div>
+                <div class="footer__logo">Rika<span>Nails</span></div>
+                <p>Салон маникюра с душой</p>
+            </div>
+            <div class="footer__contacts">
+                <h4>Контакты</h4>
+                <p>ул. Розовая, 15, Москва</p>
+                <p>+7 (999) 123-45-67</p>
+                <p>info@rikanails.ru</p>
+                <p>Ежедневно 10:00 - 21:00</p>
+            </div>
+            <div class="footer__nav">
+                <h4>Информация</h4>
+                <p><a href="article.html">Блог</a></p>
+                <p><a href="LocalBusiness.html">Главная</a></p>
+                <p><a href="#">Политика конфиденциальности</a></p>
+            </div>
+        </div>
+        <div class="footer__copy">© 2026 RikaNails. Все права защищены.</div>
+    </div>
+</footer>
+
+<script>
+    document.getElementById('burger').onclick = function() {
+        document.getElementById('nav').classList.toggle('active');
+    };
+</script>
+
+</body>
+</html>
