@@ -843,33 +843,33 @@ h1, h2, h3, h4 {
     </section>
 
     <section class="booking" id="booking">
-        <div class="container">
-            <div class="booking__inner">
-                <h2 class="section-title">Записаться онлайн</h2>
-                <form>
-                    <div class="form__group">
-                        <input type="text" class="form__input" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="form__group">
-                        <input type="tel" class="form__input" placeholder="Телефон" required>
-                    </div>
-                    <div class="form__group">
-                        <select class="form__input">
-                            <option>Маникюр</option>
-                            <option>Педикюр</option>
-                            <option>Дизайн</option>
-                            <option>Наращивание</option>
-                            <option>Гель-лак</option>
-                        </select>
-                    </div>
-                    <div class="form__group">
-                        <input type="date" class="form__input" required>
-                    </div>
-                    <button type="submit" class="form__btn">Записаться</button>
-                </form>
-            </div>
+    <div class="container">
+        <div class="booking__inner">
+            <h2 class="section-title">Записаться онлайн</h2>
+            <form id="bookingForm">  <!-- Добавьте id форме -->
+                <div class="form__group">
+                    <input type="text" class="form__input" placeholder="Ваше имя" required>
+                </div>
+                <div class="form__group">
+                    <input type="tel" class="form__input" placeholder="Телефон" required>
+                </div>
+                <div class="form__group">
+                    <select class="form__input">
+                        <option>Маникюр</option>
+                        <option>Педикюр</option>
+                        <option>Дизайн</option>
+                        <option>Наращивание</option>
+                        <option>Гель-лак</option>
+                    </select>
+                </div>
+                <div class="form__group">
+                    <input type="date" class="form__input" required>
+                </div>
+                <button type="submit" class="form__btn">Записаться</button>
+            </form>
         </div>
-    </section>
+    </div>
+</section>
 </main>
 
 <footer class="footer" id="footer">
@@ -923,6 +923,31 @@ h1, h2, h3, h4 {
         if (window.innerWidth > 768) {
             nav.classList.remove('active');
             overlay.classList.remove('active');
+        }
+    });
+</script>
+    <script>
+    // Отправка цели в Яндекс.Метрику при отправке формы
+    document.getElementById('bookingForm').addEventListener('submit', function(event) {
+        event.preventDefault(); // Предотвращаем реальную отправку (если нет бэкенда)
+        
+        // Проверяем, что все поля заполнены
+        const name = this.querySelector('input[placeholder="Ваше имя"]').value;
+        const phone = this.querySelector('input[placeholder="Телефон"]').value;
+        const date = this.querySelector('input[type="date"]').value;
+        
+        if (name && phone && date) {
+            // Отправляем цель в Яндекс.Метрику
+            if (typeof ym !== 'undefined') {
+                ym(XXXXXXXX, 'reachGoal', 'form_submit'); // XXXXXXXXX — ваш ID счетчика
+                console.log('Цель "form_submit" отправлена в Метрику');
+            }
+            
+            // Показываем сообщение об успешной отправке
+            alert('Спасибо! Мы свяжемся с вами для подтверждения записи.');
+            this.reset(); // Очищаем форму
+        } else {
+            alert('Пожалуйста, заполните все поля');
         }
     });
 </script>
